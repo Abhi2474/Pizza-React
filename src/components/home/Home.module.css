@@ -1,0 +1,18 @@
+.ul {
+	font-size: 25px;
+	display: flex;
+	justify-content: center;
+}
+
+
+.ul li {
+	list-style: none;
+	margin: 0 10px;
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.li:hover {
+	color: black;
+	font-weight: bold;
+	text-decoration: none;
+}
