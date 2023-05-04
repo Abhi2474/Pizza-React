@@ -36,10 +36,8 @@ const Login = () => {
         setSubmitDisabled(false)
         setAuthenticated(true)
         navigate('/')
-        console.log(res.user.refreshToken);
-        res.user?.getIdToken().then(res=>{
-          localStorage.setItem('accessToken', res)
-          setAuthenticated(true)})
+        console.log(res.user.refreshToken)
+        setAuthenticated(true)
       }).catch(err => {
         setSubmitDisabled(false)
         setErrMsg(getErr(err.message))

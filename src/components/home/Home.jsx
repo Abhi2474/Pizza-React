@@ -4,7 +4,7 @@ import styles from './Home.module.css'
 import { FirebaseContext } from '../../context/FirebaseContext'
 import InputControl from '../input/InputControl'
 import { collection, addDoc } from "firebase/firestore"; 
-import { db } from '../../firebase'
+import { auth, db } from '../../firebase'
 
 const Home = (props) => {
 
@@ -17,7 +17,7 @@ const Home = (props) => {
 	})
 
 	const handleLogout = () => {
-		localStorage.clear('accesstoken')
+		auth.signOut()
 		setAuthenticated(false)
 	}
 
@@ -44,10 +44,10 @@ const Home = (props) => {
 				<li><Link to={'/'} className={styles.li}>Home</Link></li>
 				<li><Link to={'/login'} className={styles.li}>Login</Link></li>
 				<li><Link to={'/signup'} className={styles.li}>Signup</Link></li>
-				<li><Link to={'/signup'} className={styles.li} onClick={handleLogout}>Logout</Link></li>
+				<li><Link to={'/login'} className={styles.li} onClick={handleLogout}>Logout</Link></li>
 			</ul>
 
-			<h2>{props.name ? `Signed in as ${props.name}` : 'login please'} </h2>
+			<h1 className={styles.name}>{props.name ? `Signed in as ${props.name}` : 'login please'} </h1>
 			{
 				authenticated ?
 					<>
