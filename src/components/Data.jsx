@@ -18,7 +18,7 @@ const Data = () => {
     <div className="flex my-2 container mx-auto mb-16">
       {data.map((item) => {
         const dbData = item._document.data.value.mapValue.fields;
-        return <DataTemplate key={item.id} dbData={dbData} />;
+        return <DataTemplate key={item.id} item={item} />;
       })}
     </div>
   );

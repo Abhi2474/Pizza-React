@@ -14,7 +14,6 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        // console.log(user);
         setLoginData(user);
         user.getIdToken().then((res) => {
           localStorage.setItem("accessToken", res);
