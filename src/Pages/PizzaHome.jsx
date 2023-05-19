@@ -1,9 +1,9 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import DataTemplate from "./DataTemplate";
+import { collection, getDocs } from "firebase/firestore";
+import PizzaTemplete from "../components/PizzaTemplete";
 
-const Data = () => {
+const PizzaHome = () => {
   const [data, setData] = useState([]);
 
   async function fetchData() {
@@ -19,13 +19,15 @@ const Data = () => {
   }, [memoizedFetchData]);
 
   return (
-    <div className="grid grid-cols-2 my-2 container mx-auto mb-16">
-      {data.map((item) => {
-        const dbData = item._document.data.value.mapValue.fields;
-        return <DataTemplate key={item.id} item={item} />;
-      })}
-    </div>
+    <>
+      <div className="flex flex-wrap justify-evenly my-10 container mx-auto">
+        {data.map((item) => {
+          const dbData = item._document.data.value.mapValue.fields;
+          return <PizzaTemplete key={item.id} item={item} />;
+        })}
+      </div>
+    </>
   );
 };
 
-export default Data;
+export default PizzaHome;

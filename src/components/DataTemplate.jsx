@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { MdDelete } from "react-icons/md";
 import { FaEdit } from "react-icons/fa";
-import { BsThreeDots } from "react-icons/bs";
+import { BsThreeDots, BsCurrencyRupee } from "react-icons/bs";
 import { deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
 import EditData from "./EditData";
@@ -13,7 +13,7 @@ const DataTemplate = ({ item }) => {
 
   const handleDelete = async (id) => {
     try {
-      const delRef = await deleteDoc(doc(db, "engineers", id));
+      const delRef = await deleteDoc(doc(db, "pizza", id));
     } catch (error) {
       console.log(error);
     }
@@ -21,23 +21,31 @@ const DataTemplate = ({ item }) => {
 
   return (
     <>
-      <div className="w-fit h-52 bg-gradient-to-r from-blue-100 to-blue-300 my-4 mx-2 rounded flex flex-col justify-center px-8 relative">
-        <p>
-          <b>Name: </b>
-          {dbData.name.stringValue}
-        </p>
-        <p>
-          <b>Profession: </b>
-          {dbData.profession.stringValue}
-        </p>
-        <p>
-          <b>Income: </b>
-          {dbData.income.integerValue}
-        </p>
-        <BsThreeDots
-          onClick={() => setDropdown(!dropDown)}
-          className="absolute top-0 right-0 text-5xl opacity-50 hover:opacity-100 cursor-pointer hover:bg-gray-200 rounded px-2"
+      <div className=" my-4 mx-2 rounded-lg flex px-8 relative shadow-lg py-3 ">
+        <img
+          className=" rounded w-40 mr-4"
+          src={dbData.image?.stringValue}
+          alt=""
         />
+        <div className="bg-gradient-to-r from-orange-200 to-orange-300 px-4 pt-2 w-64 rounded-md">
+          <p>
+            <b>Name: </b>
+            {dbData.name.stringValue}
+          </p>
+          <p>
+            <b>Size: </b>
+            {dbData.size.stringValue}
+          </p>
+          <p className="flex items-center">
+            <b>Price: </b>
+            <BsCurrencyRupee />
+            {dbData.price.stringValue}
+          </p>
+          <BsThreeDots
+            onClick={() => setDropdown(!dropDown)}
+            className="absolute text-5xl opacity-50 hover:opacity-100 cursor-pointer hover:bg-gray-200 rounded px-2 top-0 right-8"
+          />
+        </div>
         {dropDown && (
           <div className="text-xl bg-white w-fit py-2 px-3 rounded pb-4 absolute top-8 right-1">
             <MdDelete
@@ -50,7 +58,6 @@ const DataTemplate = ({ item }) => {
             />
           </div>
         )}
-        {/* <div className="relative flex justify-center items-center"> */}
         {isEdit && (
           <EditData
             dbData={dbData}
@@ -60,7 +67,6 @@ const DataTemplate = ({ item }) => {
           />
         )}
       </div>
-      {/* </div> */}
     </>
   );
 };

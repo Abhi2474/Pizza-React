@@ -11,14 +11,20 @@ const Navbar = () => {
   const handleSignOut = () => {
     auth.signOut();
     navigate("/login");
+    window.location.reload();
   };
 
   return (
     <>
       <ul className="flex justify-center font-bold text-lg py-2">
         <li>
-          <Link className="hover:underline" to="/">
+          <Link className="hover:underline mx-5" to="/">
             Home
+          </Link>
+        </li>
+        <li>
+          <Link className="hover:underline" to="/api">
+            Create
           </Link>
         </li>
         {!authenticated ? (

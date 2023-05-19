@@ -10,13 +10,13 @@ const formField = "rounded py-1 px-3 focus:outline-none";
 const EditData = ({ dbData, item, setIsEdit, isEdit }) => {
   const initialValues = {
     name: dbData.name.stringValue,
-    profession: dbData.profession.stringValue,
-    income: dbData.income.integerValue,
+    size: dbData.size.stringValue,
+    price: dbData.price.stringValue,
   };
 
   const handleUpdate = async (values, id) => {
     try {
-      const updateRef = await updateDoc(doc(db, "engineers", id), values);
+      const updateRef = await updateDoc(doc(db, "pizza", id), values);
       setIsEdit(!isEdit);
     } catch (error) {
       console.log(error);
@@ -40,17 +40,29 @@ const EditData = ({ dbData, item, setIsEdit, isEdit }) => {
               <Field className={formField} type="text" name="name" />
               <ErrorMessage name="name" component="div" />
             </div>
+            {/* 
+            <div className={formDiv}>
+              <label htmlFor="size">size</label>
+              <Field className={formField} type="text" name="size" />
+              <ErrorMessage name="size" component="div" />
+            </div> */}
+
+            <select
+              name="size"
+              id=""
+              className={formField}
+              // onChange={(e) => setSize(e.target.value)}
+            >
+              <option value="">--Select Size--</option>
+              <option value="L">Large</option>
+              <option value="M">Medium</option>
+              <option value="S">Small</option>
+            </select>
 
             <div className={formDiv}>
-              <label htmlFor="profession">Profession</label>
-              <Field className={formField} type="text" name="profession" />
-              <ErrorMessage name="profession" component="div" />
-            </div>
-
-            <div className={formDiv}>
-              <label htmlFor="income">Income</label>
-              <Field className={formField} type="number" name="income" />
-              <ErrorMessage name="income" component="div" />
+              <label htmlFor="price">Price</label>
+              <Field className={formField} type="text" name="price" />
+              <ErrorMessage name="price" component="div" />
             </div>
 
             <button
