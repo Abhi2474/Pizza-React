@@ -7,9 +7,9 @@ const Data = () => {
   const [data, setData] = useState([]);
 
   async function fetchData() {
+    // This gives the complete collection of pizza
     const querySnapshot = await getDocs(collection(db, "pizza"));
-    // const querySnapshot = await getDocs(collection(db, "engineers"));
-    console.log(querySnapshot.docs);
+    // console.log(querySnapshot.docs);
     setData(querySnapshot.docs);
   }
   const memoizedFetchData = useMemo(() => fetchData, []);

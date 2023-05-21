@@ -13,6 +13,7 @@ const DataTemplate = ({ item }) => {
 
   const handleDelete = async (id) => {
     try {
+      // This command will delete the one document from the pizza collection
       const delRef = await deleteDoc(doc(db, "pizza", id));
     } catch (error) {
       console.log(error);

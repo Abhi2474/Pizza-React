@@ -16,6 +16,7 @@ const EditData = ({ dbData, item, setIsEdit, isEdit }) => {
 
   const handleUpdate = async (values, id) => {
     try {
+      // This command will update the existing document of pizza collection as the id given of it
       const updateRef = await updateDoc(doc(db, "pizza", id), values);
       setIsEdit(!isEdit);
     } catch (error) {
@@ -40,19 +41,8 @@ const EditData = ({ dbData, item, setIsEdit, isEdit }) => {
               <Field className={formField} type="text" name="name" />
               <ErrorMessage name="name" component="div" />
             </div>
-            {/* 
-            <div className={formDiv}>
-              <label htmlFor="size">size</label>
-              <Field className={formField} type="text" name="size" />
-              <ErrorMessage name="size" component="div" />
-            </div> */}
 
-            <select
-              name="size"
-              id=""
-              className={formField}
-              // onChange={(e) => setSize(e.target.value)}
-            >
+            <select name="size" id="" className={formField}>
               <option value="">--Select Size--</option>
               <option value="L">Large</option>
               <option value="M">Medium</option>

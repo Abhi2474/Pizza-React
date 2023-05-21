@@ -6,6 +6,7 @@ import { auth } from "./firebase";
 import { FirebaseContext } from "./context/FirebaseContext";
 import Home from "./Pages/Home";
 import PizzaHome from "./Pages/PizzaHome";
+import Cart from "./Pages/Cart";
 
 function App() {
   const [loginData, setLoginData] = useState("");
@@ -13,6 +14,7 @@ function App() {
   const [cart, setCart] = useState({});
 
   useEffect(() => {
+    // all cart items are stored in local storage
     window.localStorage.setItem("cart", JSON.stringify(cart));
   }, [cart]);
 
@@ -31,16 +33,17 @@ function App() {
   return (
     <>
       <FirebaseContext.Provider
-        value={{ authenticated, loginData, setLoginData, setCart }}
+        value={{ authenticated, loginData, setLoginData, cart, setCart }}
       >
         <BrowserRouter>
-          <Navbar />
+          {!authenticated ? "" : <Navbar />}
           <Routes>
             <Route
               path="/"
               element={authenticated ? <PizzaHome /> : <Login />}
             />
             <Route path="/api" element={<Home />} />
+            <Route path="/cart" element={<Cart />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<Signup />} />
           </Routes>

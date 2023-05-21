@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { auth } from "../firebase";
 import { Field, Form, Formik, ErrorMessage } from "formik";
@@ -36,7 +36,7 @@ const Signup = () => {
     <>
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
         {({ isSubmitting }) => (
-          <Form className="py-5 my-4 flex flex-col justify-between items-center bg-gradient-to-r from-green-400 to-green-600">
+          <Form className="w-1/2 mx-auto rounded py-10 my-20 flex flex-col justify-between items-center bg-gradient-to-r from-orange-400 to-red-400">
             <h1 className="text-3xl text-center font-bold mb-4">Signup Form</h1>
 
             <div className={formDiv}>
@@ -58,12 +58,18 @@ const Signup = () => {
             </div>
 
             <button
-              className="bg-green-100 my-4 px-4 rounded py-1 text-lg cursor-pointer hover:bg-green-600"
+              className="bg-gray-100 my-4 px-4 rounded py-1 text-lg cursor-pointer hover:bg-gray-600 hover:text-white"
               type="submit"
               disabled={isSubmitting}
             >
               SignUp
             </button>
+            <Link
+              className="hover:underline hover:italic text-gray-800 font-bold"
+              to={"/login"}
+            >
+              Already have an account ? Click Here
+            </Link>
           </Form>
         )}
       </Formik>

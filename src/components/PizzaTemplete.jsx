@@ -1,29 +1,34 @@
-import { collection, doc, getDoc } from "firebase/firestore";
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { BsCurrencyRupee, BsCartPlus } from "react-icons/bs";
-import { db } from "../firebase";
 import { FirebaseContext } from "../context/FirebaseContext";
 
 const PizzaTemplete = ({ item }) => {
   const dbData = item._document.data.value.mapValue.fields;
 
-  const { setCart } = useContext(FirebaseContext);
+  const { cart, setCart } = useContext(FirebaseContext);
 
   const handleSubmit = async (id) => {
-    const docRef = doc(db, "pizza", `${id}`);
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      setCart(docSnap.data());
-      console.log("Document data:", docSnap.data());
-      //   localStorage.setItem("cart", JSON.stringify({ ...data, data }));
-    } else {
-      // docSnap.data() will be undefined in this case
-      console.log("No such document!");
+    console.log(id);
+    let _cart = { ...cart };
+    if (!_cart.items) {
+      _cart.items = {};
     }
+    if (_cart.items[id]) {
+      _cart.items[id] += 1;
+    } else {
+      _cart.items[id] = 1;
+    }
+
+    if (!_cart.totalItems) {
+      _cart.totalItems = 0;
+    }
+    _cart.totalItems += 1;
+
+    setCart(_cart);
   };
   return (
     <>
-      <div className=" my-4 mx-2 rounded-lg flex px-8 relative shadow-lg py-4 border mx-auto w-fit">
+      <div className=" my-4 mx-2 rounded-lg flex px-8 relative shadow-lg py-4 border mx-auto w-fit hover:shadow-2xl">
         <img
           className=" rounded w-48 mr-4"
           src={dbData.image?.stringValue}

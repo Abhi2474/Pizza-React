@@ -1,16 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FirebaseContext } from "../context/FirebaseContext";
-import { collection, addDoc, snapshotEqual } from "firebase/firestore";
-import { auth, db, storage } from "../firebase";
-import { ErrorMessage, Field, Form, Formik } from "formik";
+import { collection, addDoc } from "firebase/firestore";
+import { db, storage } from "../firebase";
 import { Data } from "../components";
-import {
-  getDownloadURL,
-  getMetadata,
-  ref,
-  uploadBytes,
-  uploadBytesResumable,
-} from "firebase/storage";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 const formDiv = "flex flex-col my-1 pt-5 w-1/3 mx-auto";
 const formField = "rounded py-2 px-3 focus:outline-none border my-1";
@@ -18,7 +11,6 @@ const formField = "rounded py-2 px-3 focus:outline-none border my-1";
 const Home = (props) => {
   const { authenticated, setAuthenticated } = useContext(FirebaseContext);
   const [value, setValue] = useState({});
-  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const [image, setImage] = useState("");
   const [name, setName] = useState("");
@@ -87,6 +79,10 @@ const Home = (props) => {
   };
 
   useEffect(() => {
+    document.title = "Home";
+  }, []);
+
+  useEffect(() => {
     setValue({ name, size, price, image });
   }, [name, size, price, image]);
 
@@ -146,7 +142,6 @@ const Home = (props) => {
         </form>
         <div className={formDiv}>
           <input
-            className=""
             type="file"
             name=""
             id=""
