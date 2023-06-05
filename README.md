@@ -14,7 +14,7 @@ This project is a React-Vite and Firebase app that provides CRUD (Create, Read, 
 
 To get started with this project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/Abhi2474/React-firebase.git`.
+1. Clone the repository: `git clone https://github.com/Abhi2474/Pizza-React.git`.
 2. Install the dependencies: `npm install`.
 3. Start the development server: `npm run dev`.
 
