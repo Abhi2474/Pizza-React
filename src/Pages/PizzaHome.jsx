@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
 import { PizzaTemplete } from "../components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import mainPizza from "../assets/mainPizza.png";
 
 const PizzaHome = () => {
   const [data, setData] = useState([]);
@@ -41,7 +41,7 @@ const PizzaHome = () => {
             Order Now
           </motion.button>
         </div>
-        <img src="src/assets/mainPizza.png" alt="" />
+        <img src={mainPizza} alt="" />
       </div>
       <div
         className={`flex flex-wrap justify-evenly my-10 container mx-auto overflow-hidden`}
