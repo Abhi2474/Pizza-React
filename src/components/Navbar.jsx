@@ -8,7 +8,7 @@ const Navbar = () => {
   const { loginData, authenticated } = useContext(FirebaseContext);
 
   const { cart } = useContext(FirebaseContext);
-
+  console.log(cart.totalItems);
   const navigate = useNavigate();
 
   const handleSignOut = () => {

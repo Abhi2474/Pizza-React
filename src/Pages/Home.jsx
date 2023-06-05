@@ -79,7 +79,7 @@ const Home = (props) => {
   };
 
   useEffect(() => {
-    document.title = "Home";
+    document.title = "Create Data";
   }, []);
 
   useEffect(() => {

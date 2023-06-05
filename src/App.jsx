@@ -19,6 +19,8 @@ function App() {
   }, [cart]);
 
   useEffect(() => {
+    document.title = "Home";
+
     auth.onAuthStateChanged((user) => {
       if (user) {
         setLoginData(user);
