@@ -1,6 +1,6 @@
 # React-firebase
 
-This project is a React-Vite and Firebase app that provides CRUD (Create, Read, Update, Delete) operations along with user authentication. It allows users to sign up, create their user profiles, and interact with the app's data.
+This project is a React-Vite and Firebase app that provides CRUD (Create, Read, Update, Delete) operations along the user authentication. It allows users to signup/login, create their user profiles, and interact with the app's data. And still working on it.
 
 ## Features
 
@@ -14,7 +14,7 @@ This project is a React-Vite and Firebase app that provides CRUD (Create, Read, 
 
 To get started with this project, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/Abhi2474/React-firebase.git`.
+1. Clone the repository: `git clone https://github.com/Abhi2474/Pizza-React.git`.
 2. Install the dependencies: `npm install`.
 3. Start the development server: `npm run dev`.
 
