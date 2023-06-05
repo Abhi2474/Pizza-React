@@ -2,6 +2,9 @@
 
 This project is a React-Vite and Firebase app that provides CRUD (Create, Read, Update, Delete) operations along the user authentication. It allows users to signup/login, create their user profiles, and interact with the app's data. And still working on it.
 
+[![Alt Text](src/assets/mainPizza.png)](https://pizza-react-dun.vercel.app/)
+
+
 ## Features
 
 - **React-Vite**: Leveraging the speed and efficiency of React-Vite, the development process is accelerated. Its lightning-fast setup and hot module replacement make it incredibly convenient.
