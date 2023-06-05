@@ -41,7 +41,7 @@ const PizzaHome = () => {
             Order Now
           </motion.button>
         </div>
-        <img src="src/assets/mainPizza-removebg-preview.png" alt="" />
+        <img src="src/assets/mainPizza.png" alt="" />
       </div>
       <div
         className={`flex flex-wrap justify-evenly my-10 container mx-auto overflow-hidden`}
