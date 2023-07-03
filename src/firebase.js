@@ -1,17 +1,17 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore } from "firebase/firestore";
 import { getStorage, ref } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyAkciPs5dzDGQjWzGcKCHbuiacf7u2db2Y",
-  authDomain: "react-project-8462a.firebaseapp.com",
-  projectId: "react-project-8462a",
-  storageBucket: "react-project-8462a.appspot.com",
-  messagingSenderId: "493888081681",
-  appId: "1:493888081681:web:b1b81259a02d529f3706b0",
-  measurementId: "G-2JG2YW0R63"
+  apiKey: import.meta.env.VITE_API_KEY,
+  authDomain: import.meta.env.VITE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_APP_ID,
+  measurementId: import.meta.env.VITE_MEASUREMENT_ID,
 };
 
 // Initialize Firebase
@@ -20,8 +20,8 @@ const app = initializeApp(firebaseConfig);
 const storage = getStorage();
 const storageRef = ref(storage);
 
-const auth = getAuth(app)
+const auth = getAuth(app);
 
-const db = getFirestore(app)
+const db = getFirestore(app);
 
-export { app, auth, db, storage, storageRef }
+export { app, auth, db, storage, storageRef };
